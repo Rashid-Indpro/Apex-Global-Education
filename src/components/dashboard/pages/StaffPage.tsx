@@ -508,7 +508,7 @@ export const StaffPage: React.FC = () => {
                             className="w-full h-full object-cover"
                             onError={(e) => {
                               (e.currentTarget as HTMLImageElement).src =
-                                '/src/assets/images/staff_counselor_female_1794140015435.jpg';
+                                'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop';
                             }}
                           />
                         </div>

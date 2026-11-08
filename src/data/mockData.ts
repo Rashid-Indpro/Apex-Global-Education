@@ -7,9 +7,11 @@ import {
 } from '../types.ts';
 
 export const ASSET_PATHS = {
-  heroCampus: '/src/assets/images/hero_education_campus_1794135770027.jpg',
-  consultation: '/src/assets/images/consultation_advisory_1794135770515.jpg',
-  adminAvatar: '/src/assets/images/admin_director_avatar_1794135770923.jpg',
+  heroCampus: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=1600&auto=format&fit=crop',
+  consultation: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1200&auto=format&fit=crop',
+  adminAvatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=800&auto=format&fit=crop',
+  staffFemale: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop',
+  staffMale: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=800&auto=format&fit=crop',
 };
 
 export const SERVICES_DATA: ConsultancyService[] = [

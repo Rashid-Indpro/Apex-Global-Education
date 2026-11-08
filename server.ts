@@ -177,7 +177,7 @@ const DEFAULT_SITE_CONTENT: SiteContentCollection = {
     heroKicker: 'Certified Education Counsel · British Council & PIER Accredited · 180+ Global University Partners',
     heroTitle: 'Your Pathway to World-Class Higher Education.',
     heroSubtitle: 'We guide ambitious international students from university shortlisting and merit scholarship acquisition to student visa grant and pre-departure settlement.',
-    heroImage: '/src/assets/images/hero_education_campus_1794135770027.jpg',
+    heroImage: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=1600&auto=format&fit=crop',
     ctaPrimaryText: 'Apply Now for 2026/2027',
     ctaSecondaryText: 'Download Intake Dossier',
     statStudentsCount: '12,500+',
@@ -190,7 +190,7 @@ const DEFAULT_SITE_CONTENT: SiteContentCollection = {
     statScholarshipsLabel: 'Tuition Scholarships Secured in 2025/26',
     advisoryTitle: 'Why Choose Apex Global Education',
     advisorySubtitle: 'International education is a high-stakes investment. We replace generic guesswork with certified legal counselors, institutional tie-ups, and ethical accountability.',
-    advisoryImage: '/src/assets/images/consultation_advisory_1794135770515.jpg',
+    advisoryImage: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1200&auto=format&fit=crop',
     caseStudyQuote: 'Apex Global resolved our complex 28-day UK bank solvency audit and helped me secure a £5,000 Vice-Chancellor Scholarship at the University of Birmingham. The visa arrived in 9 days.',
     caseStudyAuthor: 'Tariq Al-Mansoor · MSc Advanced Computer Science · Birmingham, UK',
   },
@@ -522,7 +522,7 @@ const SEED_STAFF_MEMBERS: StaffMemberRecord[] = [
     contactNumber: '+44 20 7946 0914',
     designation: 'Head of UK & Commonwealth Admissions',
     department: 'Admissions & CAS Filing',
-    photoUrl: '/src/assets/images/staff_counselor_female_1794140015435.jpg',
+    photoUrl: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop',
     status: 'Active',
     joiningDate: '2022-04-15',
     specialization: 'UK Tier 4, Russell Group, Ireland SDS',
@@ -538,7 +538,7 @@ const SEED_STAFF_MEMBERS: StaffMemberRecord[] = [
     contactNumber: '+1 416 555 0192',
     designation: 'Senior North American Visa Strategist',
     department: 'Immigration & Compliance',
-    photoUrl: '/src/assets/images/staff_counselor_male_1794140015599.jpg',
+    photoUrl: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=800&auto=format&fit=crop',
     status: 'Active',
     joiningDate: '2023-01-10',
     specialization: 'Canada SDS, USA F-1, Scholarship Grants',
@@ -554,7 +554,7 @@ const SEED_STAFF_MEMBERS: StaffMemberRecord[] = [
     contactNumber: '+61 3 9650 4825',
     designation: 'Australia & New Zealand Case Manager',
     department: 'Pacific Regional Desk',
-    photoUrl: '/src/assets/images/staff_counselor_female_1794140015435.jpg',
+    photoUrl: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=800&auto=format&fit=crop',
     status: 'Active',
     joiningDate: '2023-08-01',
     specialization: 'Subclass 500, Genuine Student Intent, OSHC',
@@ -570,7 +570,7 @@ const SEED_STAFF_MEMBERS: StaffMemberRecord[] = [
     contactNumber: '+49 30 2345 6780',
     designation: 'European & DAAD Admission Specialist',
     department: 'Continental Europe Desk',
-    photoUrl: '/src/assets/images/staff_counselor_male_1794140015599.jpg',
+    photoUrl: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=800&auto=format&fit=crop',
     status: 'Active',
     joiningDate: '2024-02-15',
     specialization: 'Germany Public Unis, APS, Blocked Accounts',
@@ -586,7 +586,7 @@ const SEED_STAFF_MEMBERS: StaffMemberRecord[] = [
     contactNumber: '+44 20 7946 0900',
     designation: 'Executive Director & Legal Counsel',
     department: 'Executive Governance',
-    photoUrl: '/src/assets/images/admin_director_avatar_1794135770923.jpg',
+    photoUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=800&auto=format&fit=crop',
     status: 'Active',
     joiningDate: '2021-01-05',
     specialization: 'Immigration Law, University Governance & Escrow',
@@ -634,6 +634,23 @@ try {
         ? parsed.staffMembers
         : [...SEED_STAFF_MEMBERS],
     };
+
+    // Auto-upgrade legacy local asset paths to online CDN image URLs
+    if (database.siteContent?.homepage) {
+      if (!database.siteContent.homepage.heroImage || database.siteContent.homepage.heroImage.startsWith('/src/assets')) {
+        database.siteContent.homepage.heroImage = DEFAULT_SITE_CONTENT.homepage.heroImage;
+      }
+      if (!database.siteContent.homepage.advisoryImage || database.siteContent.homepage.advisoryImage.startsWith('/src/assets')) {
+        database.siteContent.homepage.advisoryImage = DEFAULT_SITE_CONTENT.homepage.advisoryImage;
+      }
+    }
+    if (Array.isArray(database.staffMembers)) {
+      database.staffMembers.forEach((stf, idx) => {
+        if (!stf.photoUrl || stf.photoUrl.startsWith('/src/assets')) {
+          stf.photoUrl = SEED_STAFF_MEMBERS[idx]?.photoUrl || 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop';
+        }
+      });
+    }
   }
 } catch (e) {
   console.warn('Initial database load error; using seed records.');
@@ -1752,10 +1769,11 @@ async function startServer() {
     app.get('*', (_req: Request, res: Response) => {
       res.sendFile(path.resolve(distPath, 'index.html'));
     });
-    app.listen(PORT, () => {
-      console.log(`[Full App Engine] Running on port ${PORT} (${isProduction ? 'production' : 'development'})`);
-    });
   }
+
+  app.listen(PORT, () => {
+    console.log(`[Full App Engine] Running on port ${PORT} (${isProduction ? 'production' : 'development'})`);
+  });
 }
 
 export default app;

@@ -187,6 +187,9 @@ export const Home: React.FC<HomeProps> = ({ onNavigate: customNavigate }) => {
                   alt="University campus academic center"
                   className="w-full h-full object-cover transition-opacity duration-300"
                   referrerPolicy="no-referrer"
+                  onError={(e) => {
+                    e.currentTarget.src = 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=1600&auto=format&fit=crop';
+                  }}
                 />
                 
                 {/* Caption scrim */}
@@ -493,6 +496,9 @@ export const Home: React.FC<HomeProps> = ({ onNavigate: customNavigate }) => {
                 alt="Accredited education advisor conducting counseling session"
                 className="w-full h-full object-cover transition-opacity duration-300"
                 referrerPolicy="no-referrer"
+                onError={(e) => {
+                  e.currentTarget.src = 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1200&auto=format&fit=crop';
+                }}
               />
             </div>
 
