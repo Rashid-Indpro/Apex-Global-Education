@@ -1,0 +1,6 @@
+{
+  "name": "Apex Global Education",
+  "description": "Premier international education consultancy and student visa advisory portal with client onboarding and staff administrative dashboard.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

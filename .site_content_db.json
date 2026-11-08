@@ -1,0 +1,38 @@
+{
+  "homepage": {
+    "heroKicker": "Certified Education Counsel · British Council & PIER Accredited · 180+ Global University Partners",
+    "heroTitle": "Your Pathway to World-Class Higher Education.",
+    "heroSubtitle": "We guide ambitious international students from university shortlisting and merit scholarship acquisition to student visa grant and pre-departure settlement.",
+    "heroImage": "/src/assets/images/hero_education_campus_1794135770027.jpg",
+    "ctaPrimaryText": "Apply Now for 2026/2027",
+    "ctaSecondaryText": "Download Intake Dossier",
+    "statStudentsCount": "12,500+",
+    "statStudentsLabel": "International Students Placed",
+    "statVisaRate": "98.4%",
+    "statVisaLabel": "First-Time Visa Approval Rate",
+    "statPartnersCount": "180+",
+    "statPartnersLabel": "Direct University Partnerships",
+    "statScholarships": "$4.2M+",
+    "statScholarshipsLabel": "Tuition Scholarships Secured in 2025/26",
+    "advisoryTitle": "Why Choose Apex Global Education",
+    "advisorySubtitle": "International education is a high-stakes investment. We replace generic guesswork with certified legal counselors, institutional tie-ups, and ethical accountability.",
+    "advisoryImage": "/src/assets/images/consultation_advisory_1794135770515.jpg",
+    "caseStudyQuote": "Apex Global resolved our complex 28-day UK bank solvency audit and helped me secure a £5,000 Vice-Chancellor Scholarship at the University of Birmingham. The visa arrived in 9 days.",
+    "caseStudyAuthor": "Tariq Al-Mansoor · MSc Advanced Computer Science · Birmingham, UK"
+  },
+  "announcements": {
+    "cycle": "2026/2027",
+    "headline": "UK Autumn 2026 CAS Allocation Window Opened for Russell Group Institutions",
+    "body": "Partner universities have commenced issuing Confirmation of Acceptance for Studies (CAS). Prospective applicants must ensure their 28-day bank maintenance certificates are dated within 31 days of application.",
+    "isActive": true
+  },
+  "about": {
+    "missionTitle": "Fiduciary Duty to Every Scholar",
+    "missionStatement": "Our caseworkers hold verified credentials from the British Council, PIER Australia, and ICEF, guaranteeing strict compliance with latest border policies.",
+    "accreditationBadges": [
+      "British Council Certified Agency #BC-UK-9041",
+      "PIER Qualified Education Agent Counselor (QEAC M412)",
+      "ICEF Formal Institutional Partner #5419"
+    ]
+  }
+}
