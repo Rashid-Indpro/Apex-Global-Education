@@ -1752,11 +1752,14 @@ async function startServer() {
     app.get('*', (_req: Request, res: Response) => {
       res.sendFile(path.resolve(distPath, 'index.html'));
     });
+    app.listen(PORT, () => {
+      console.log(`[Full App Engine] Running on port ${PORT} (${isProduction ? 'production' : 'development'})`);
+    });
   }
-
-  app.listen(PORT, () => {
-    console.log(`[Full App Engine] Running on port ${PORT} (${isProduction ? 'production' : 'development'})`);
-  });
 }
 
-startServer();
+export default app;
+
+if (!process.env.VERCEL) {
+  startServer();
+}
